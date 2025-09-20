@@ -10,7 +10,7 @@ services:
     ports:
       - 8080:80
     volumes:
-    - /var/www/html:/var/www/html
+      - /var/www/html:/var/www/html
       #- ./configs/backend/php.ini:/usr/local/etc/php/php.ini:ro
     working_dir: /var/www/html
     environment:
@@ -30,6 +30,7 @@ services:
       MYSQL_ROOT_PASSWORD: ""
       MYSQL_DATABASE: app_web1  
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+
   web-phpmyadmin:
     container_name: phpmyadmin
     image: phpmyadmin/phpmyadmin
@@ -39,4 +40,6 @@ services:
       - 8081:80
     environment:
       PMA_HOST: web-mysql
-      MYSQL_ROOT_PASSWORD: ""  # Phải giống mật khẩu root của MySQL
+      MYSQL_ROOT_PASSWORD: ""
+    depends_on:
+      - web-mysql
