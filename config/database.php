@@ -1,5 +1,5 @@
 <?php
-define('DB_HOST', 'web-mysql');
+define('DB_HOST', 'web-mysql');   // service name MySQL
 define('DB_USER', 'root');
 define('DB_PASSWORD', '');
 define('DB_PORT', 3306);

@@ -25,8 +25,12 @@ RUN apt-get update \
         exif \
         pdo_mysql \
         mysqli \
-        && docker-php-ext-enable pdo_mysql
+    && docker-php-ext-enable pdo_mysql
 
+# ✅ Cài Redis
+RUN pecl install redis && docker-php-ext-enable redis
+
+# Cài Xdebug
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
 
@@ -43,4 +47,4 @@ RUN useradd -ms /bin/bash -u 1000 app
 
 #COPY start /usr/local/bin/
 
-#CMD [ ""start"" ]"
+#CMD [ "start" ]
