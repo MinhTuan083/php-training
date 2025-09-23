@@ -17,6 +17,9 @@ if (!empty($_POST['username']) && !empty($_POST['password'])) {
 
     if ($user) {
         session_start();
+         session_regenerate_id(true);
+
+        
         $_SESSION['id'] = $user[0]['id'];
 
         echo json_encode([
