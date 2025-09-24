@@ -17,14 +17,18 @@ if (!empty($_POST['username']) && !empty($_POST['password'])) {
 
     if ($user) {
         session_start();
-         session_regenerate_id(true);
+        session_regenerate_id(true);
 
-        
         $_SESSION['id'] = $user[0]['id'];
+
+        // Tạo CSRF token và lưu vào session
+        $csrf_token = bin2hex(random_bytes(32));
+        $_SESSION['csrf_token'] = $csrf_token;
 
         echo json_encode([
             'status' => 'success',
             'user_id' => $user[0]['id'],
+            'csrf_token' => $csrf_token, // 👈 gửi về client
             'message' => 'Login successful',
             'redirect' => '/list_users.php'
         ]);
