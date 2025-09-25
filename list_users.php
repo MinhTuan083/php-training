@@ -41,24 +41,24 @@ $users = $userModel->getUsers($params);
                 <tbody>
                     <?php foreach ($users as $user) { ?>
                         <tr>
-                            <th scope="row"><?php echo $user['id'] ?></th>
+                            <th scope="row"><?php echo htmlspecialchars($user['id'], ENT_QUOTES, 'UTF-8'); ?></th>
                             <td>
-                                <?php echo $user['name'] ?>
+                            <td><?php echo htmlspecialchars($user['name'], ENT_QUOTES, 'UTF-8'); ?></td>
                             </td>
                             <td>
-                                <?php echo $user['fullname'] ?>
+                            <td><?php echo htmlspecialchars($user['fullname'], ENT_QUOTES, 'UTF-8'); ?></td>
                             </td>
                             <td>
-                                <?php echo $user['type'] ?>
+                            <td><?php echo htmlspecialchars($user['type'], ENT_QUOTES, 'UTF-8'); ?></td>
                             </td>
                             <td>
-                                <a href="form_user.php?id=<?php echo $user['id'] ?>">
+                             <a href="form_user.php?id=<?php echo urlencode($user['id']); ?>">
                                     <i class="fa fa-pencil-square-o" aria-hidden="true" title="Update"></i>
                                 </a>
-                                <a href="view_user.php?id=<?php echo $user['id'] ?>">
+                              <a href="view_user.php?id=<?php echo urlencode($user['id']); ?>">
                                     <i class="fa fa-eye" aria-hidden="true" title="View"></i>
                                 </a>
-                                <a href="#" class="btn-delete" data-id="<?php echo $user['id'] ?>">
+                                 <a href="#" class="btn-delete" data-id="<?php echo htmlspecialchars($user['id'], ENT_QUOTES, 'UTF-8'); ?>">
                                     <i class="fa fa-eraser" aria-hidden="true" title="Delete"></i>
                                 </a>
                             </td>
